@@ -14,6 +14,9 @@ class NoMobNoDrop : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoMobNoDrop plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("doEntityDrops", "true")
+            logger.info("NoMobNoDrop plugin has been disabled.")
+        }
     }
 }
